@@ -35,8 +35,11 @@ jobs:
         mkdir -p gradle/wrapper
         # 下载 gradle-wrapper.jar
         curl -L -o gradle/wrapper/gradle-wrapper.jar https://raw.githubusercontent.com/gradle/gradle/v7.5.0/gradle/wrapper/gradle-wrapper.jar
+        # 设置 gradlew 可执行权限
+        chmod +x gradlew
         # 列出文件验证
         ls -lh gradle/wrapper/
+        ls -lh gradlew
 
     # 第五步：验证 Flutter 环境
     - name: Verify Flutter Setup
