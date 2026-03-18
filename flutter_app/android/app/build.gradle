@@ -24,7 +24,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.water_delivery"
-        minSdkVersion 21
+        minSdkVersion 23
         targetSdkVersion 34
         versionCode flutter.versionCode.toInteger()
         versionName flutter.versionName

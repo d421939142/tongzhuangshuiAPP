@@ -11,6 +11,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
+        android:name="${applicationName}"
         android:label="桶装水配送"
         android:icon="@mipmap/ic_launcher"
         android:debuggable="false">
@@ -28,8 +29,19 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+            <!-- 启动屏幕配置 -->
+            <meta-data
+                android:name="io.flutter.embedding.android.SplashScreenDrawable"
+                android:resource="@drawable/launch_background" />
+
+            <!-- Flutter 开始渲染后应用的主题 -->
+            <meta-data
+                android:name="io.flutter.embedding.android.NormalTheme"
+                android:resource="@style/NormalTheme" />
         </activity>
 
+        <!-- Android Embedding V2 标记 -->
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
