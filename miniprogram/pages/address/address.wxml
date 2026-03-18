@@ -1,0 +1,34 @@
+<!-- pages/address/address.wxml - 地址列表 -->
+<view class="addr-page">
+  <view class="addr-list" wx:if="{{addresses.length > 0}}">
+    <view
+      class="addr-card card {{mode === 'select' ? 'selectable' : ''}}"
+      wx:for="{{addresses}}"
+      wx:key="_id"
+      bindtap="selectAddr"
+      data-addr="{{item}}"
+    >
+      <view class="ac-top">
+        <view class="ac-tag-default tag tag-blue" wx:if="{{item.isDefault}}">默认</view>
+        <text class="ac-name">{{item.name}}</text>
+        <text class="ac-phone">{{item.phone}}</text>
+      </view>
+      <view class="ac-addr">{{item.province}}{{item.city}}{{item.district}}{{item.detail}}</view>
+      <view class="ac-remark" wx:if="{{item.remark}}">备注：{{item.remark}}</view>
+      <view class="ac-actions" catchtap="">
+        <view class="ac-btn" bindtap="editAddr" data-id="{{item._id}}">编辑</view>
+        <view class="ac-btn ac-btn-red" bindtap="deleteAddr" data-id="{{item._id}}">删除</view>
+        <view class="ac-btn" bindtap="setDefault" data-id="{{item._id}}" wx:if="{{!item.isDefault}}">设为默认</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="empty-state" wx:else>
+    <image class="empty-icon" src="/assets/icons/location.png" mode="aspectFit" />
+    <text class="empty-text">暂无地址，请添加</text>
+  </view>
+
+  <button class="add-addr-btn btn-primary" bindtap="addAddress">
+    + 新增收货地址
+  </button>
+</view>

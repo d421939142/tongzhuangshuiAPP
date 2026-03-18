@@ -1,0 +1,77 @@
+<!-- pages/history/detail.wxml - 订单详情 -->
+<view class="detail-page" wx:if="{{order}}">
+  <!-- 状态卡片 -->
+  <view class="status-card" style="background: linear-gradient(135deg, #0C4A6E, #0EA5E9)">
+    <view class="sc-status">{{order.statusLabel}}</view>
+    <view class="sc-tip">{{order.statusTip}}</view>
+    <view class="sc-no">订单号：{{order.orderNo}}</view>
+  </view>
+
+  <!-- 配送信息 -->
+  <view class="section-block">
+    <view class="block-title">配送信息</view>
+    <view class="delivery-row">
+      <text class="dr-label">收货人</text>
+      <text class="dr-val">{{order.address.name}} {{order.address.phone}}</text>
+    </view>
+    <view class="delivery-row">
+      <text class="dr-label">收货地址</text>
+      <text class="dr-val">{{order.address.province}}{{order.address.city}}{{order.address.district}}{{order.address.detail}}</text>
+    </view>
+    <view class="delivery-row" wx:if="{{order.deliveryTimeLabel}}">
+      <text class="dr-label">配送时间</text>
+      <text class="dr-val">{{order.deliveryTimeLabel}}</text>
+    </view>
+    <view class="delivery-row" wx:if="{{order.deliveryPerson}}">
+      <text class="dr-label">配送员</text>
+      <text class="dr-val">{{order.deliveryPerson}} {{order.deliveryPhone}}</text>
+    </view>
+  </view>
+
+  <!-- 商品清单 -->
+  <view class="section-block">
+    <view class="block-title">商品清单</view>
+    <view class="goods-item" wx:for="{{order.items}}" wx:key="goodsId">
+      <image class="gi-img" src="{{item.goodsImg}}" mode="aspectFill" />
+      <view class="gi-info">
+        <text class="gi-name">{{item.goodsName}}</text>
+        <text class="gi-spec">{{item.spec}}</text>
+      </view>
+      <view class="gi-right">
+        <text class="gi-price price">¥{{item.price}}</text>
+        <text class="gi-qty">x{{item.quantity}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 备注 -->
+  <view class="section-block" wx:if="{{order.remark}}">
+    <view class="block-title">订单备注</view>
+    <text class="remark-text">{{order.remark}}</text>
+  </view>
+
+  <!-- 价格 -->
+  <view class="section-block">
+    <view class="price-row">
+      <text class="pr-label">商品金额</text>
+      <text class="pr-value">¥{{order.totalAmount}}</text>
+    </view>
+    <view class="price-row">
+      <text class="pr-label">配送费</text>
+      <text class="pr-value" style="color:#16A34A">免费</text>
+    </view>
+    <view class="divider"></view>
+    <view class="price-row">
+      <text class="pr-label total-label">实付</text>
+      <text class="pr-value total-value price">¥{{order.totalAmount}}</text>
+    </view>
+  </view>
+
+  <!-- 操作按钮 -->
+  <view class="detail-actions">
+    <button class="btn-outline" bindtap="reorder">再来一单</button>
+    <button class="btn-danger" bindtap="cancelOrder" wx:if="{{order.status === 'pending'}}">取消订单</button>
+  </view>
+</view>
+
+<view class="loading" wx:else>加载中...</view>

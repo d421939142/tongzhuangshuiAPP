@@ -1,0 +1,22 @@
+/* pages/admin/order-detail.wxss */
+.detail-page { background: #F0F9FF; min-height: 100vh; padding-bottom: 160rpx; }
+.status-card { padding: 48rpx 32rpx; border-radius: 0 0 40rpx 40rpx; }
+.sc-status { font-size: 44rpx; font-weight: 700; color: #FFF; margin-bottom: 8rpx; }
+.sc-no { font-size: 24rpx; color: rgba(255,255,255,0.7); margin-top: 4rpx; }
+.sc-time { font-size: 22rpx; color: rgba(255,255,255,0.6); margin-top: 4rpx; }
+.section-block { background: #FFF; margin: 16rpx 24rpx; border-radius: 20rpx; padding: 28rpx; box-shadow: 0 2rpx 12rpx rgba(14,165,233,0.07); }
+.block-title { font-size: 28rpx; font-weight: 700; color: #0C4A6E; margin-bottom: 16rpx; }
+.info-row { display: flex; padding: 8rpx 0; gap: 16rpx; }
+.ir-label { font-size: 26rpx; color: #94A3B8; width: 100rpx; flex-shrink: 0; }
+.ir-val { font-size: 26rpx; color: #1E293B; flex: 1; }
+.remark-val { color: #D97706; }
+.goods-item { display: flex; justify-content: space-between; padding: 12rpx 0; border-bottom: 1rpx solid #F1F5F9; }
+.goods-item:last-child { border-bottom: none; }
+.gi-info { flex: 1; }
+.gi-name { font-size: 28rpx; font-weight: 600; color: #1E293B; display: block; }
+.gi-spec { font-size: 22rpx; color: #94A3B8; display: block; margin-top: 4rpx; }
+.gi-price { font-size: 24rpx; color: #64748B; text-align: right; }
+.total-row { display: flex; justify-content: space-between; padding-top: 8rpx; font-size: 30rpx; font-weight: 700; color: #0C4A6E; }
+.total-amount { font-size: 36rpx; }
+.action-block { position: fixed; bottom: 0; left: 0; right: 0; display: flex; gap: 20rpx; padding: 24rpx 32rpx; background: #FFF; box-shadow: 0 -4rpx 20rpx rgba(0,0,0,0.08); padding-bottom: calc(24rpx + env(safe-area-inset-bottom)); }
+.action-btn { flex: 1; font-size: 28rpx; padding: 24rpx 0; }

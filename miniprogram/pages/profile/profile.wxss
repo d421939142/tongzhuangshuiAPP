@@ -1,0 +1,145 @@
+/* pages/profile/profile.wxss */
+.profile-page {
+  background: #F0F9FF;
+  min-height: 100vh;
+  padding-bottom: 40rpx;
+}
+
+/* 用户信息头 */
+.profile-header {
+  background: linear-gradient(145deg, #0C4A6E, #0EA5E9);
+  padding: 60rpx 32rpx 80rpx;
+  position: relative;
+  border-radius: 0 0 40rpx 40rpx;
+}
+
+.ph-content {
+  display: flex;
+  align-items: center;
+  gap: 24rpx;
+}
+
+.ph-avatar {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  border: 4rpx solid rgba(255,255,255,0.5);
+  flex-shrink: 0;
+}
+
+.ph-name {
+  font-size: 36rpx;
+  font-weight: 700;
+  color: #FFF;
+  display: block;
+}
+
+.ph-sub {
+  font-size: 24rpx;
+  color: rgba(255,255,255,0.7);
+  display: block;
+  margin-top: 8rpx;
+}
+
+/* 订单快捷入口 */
+.order-quick {
+  margin: -28rpx 24rpx 20rpx;
+  position: relative;
+  z-index: 3;
+}
+
+.oq-title {
+  font-size: 26rpx;
+  color: #94A3B8;
+  margin-bottom: 20rpx;
+}
+
+.oq-items {
+  display: flex;
+  justify-content: space-around;
+}
+
+.oq-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8rpx;
+}
+
+.oq-num {
+  font-size: 40rpx;
+  font-weight: 700;
+  color: #0EA5E9;
+}
+
+.oq-label {
+  font-size: 22rpx;
+  color: #64748B;
+}
+
+/* 菜单 */
+.menu-section {
+  margin: 0 24rpx 20rpx;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  padding: 24rpx 0;
+  background: transparent;
+  border: none;
+  width: 100%;
+  text-align: left;
+}
+
+.menu-item::after {
+  display: none;
+}
+
+.mi-left {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+}
+
+.mi-icon {
+  width: 72rpx;
+  height: 72rpx;
+  border-radius: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mi-icon-blue { background: #E0F2FE; }
+.mi-icon-amber { background: #FEF3C7; }
+.mi-icon-teal { background: #CCFBF1; }
+.mi-icon-green { background: #DCFCE7; }
+
+.mi-img {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.mi-label {
+  font-size: 28rpx;
+  color: #1E293B;
+  font-weight: 500;
+}
+
+.mi-arrow {
+  width: 32rpx;
+  height: 32rpx;
+  opacity: 0.3;
+  flex-shrink: 0;
+}
+
+.mi-tag {
+  margin-right: 12rpx;
+}
+
+.contact-btn {
+  padding: 0;
+  line-height: normal;
+}

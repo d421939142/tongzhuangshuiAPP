@@ -1,0 +1,284 @@
+/* pages/order/order.wxss */
+.order-page {
+  background: #F0F9FF;
+  min-height: 100vh;
+  padding-bottom: 160rpx;
+}
+
+.page-header {
+  background: #0C4A6E;
+  padding: 24rpx 32rpx;
+  display: none; /* 使用系统导航栏 */
+}
+
+.page-title {
+  font-size: 34rpx;
+  font-weight: 700;
+  color: #FFF;
+}
+
+.section-block {
+  background: #FFF;
+  margin: 16rpx 24rpx;
+  border-radius: 20rpx;
+  padding: 28rpx;
+  box-shadow: 0 2rpx 12rpx rgba(14,165,233,0.07);
+}
+
+.block-title {
+  font-size: 28rpx;
+  font-weight: 700;
+  color: #0C4A6E;
+  margin-bottom: 20rpx;
+}
+
+/* 地址 */
+.addr-row, .addr-empty {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+}
+
+.addr-icon {
+  width: 44rpx;
+  height: 44rpx;
+  flex-shrink: 0;
+}
+
+.addr-info {
+  flex: 1;
+}
+
+.addr-name-phone {
+  display: flex;
+  gap: 16rpx;
+  align-items: center;
+  margin-bottom: 8rpx;
+}
+
+.addr-name {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #1E293B;
+}
+
+.addr-phone {
+  font-size: 26rpx;
+  color: #64748B;
+}
+
+.addr-detail {
+  font-size: 26rpx;
+  color: #475569;
+  line-height: 1.5;
+}
+
+.addr-remark {
+  font-size: 22rpx;
+  color: #94A3B8;
+  margin-top: 4rpx;
+}
+
+.addr-empty-text {
+  flex: 1;
+  font-size: 28rpx;
+  color: #94A3B8;
+}
+
+.arrow-icon {
+  width: 32rpx;
+  height: 32rpx;
+  flex-shrink: 0;
+  opacity: 0.4;
+}
+
+/* 购物车列表 */
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  padding: 16rpx 0;
+  border-bottom: 1rpx solid #F1F5F9;
+}
+
+.cart-item:last-child {
+  border-bottom: none;
+}
+
+.ci-img {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 12rpx;
+  flex-shrink: 0;
+}
+
+.ci-info {
+  flex: 1;
+}
+
+.ci-name {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #1E293B;
+  display: block;
+}
+
+.ci-spec {
+  font-size: 22rpx;
+  color: #94A3B8;
+  display: block;
+  margin: 4rpx 0;
+}
+
+.ci-price-qty {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 8rpx;
+}
+
+.ci-price {
+  font-size: 24rpx;
+}
+
+.stepper {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.step-btn {
+  width: 52rpx;
+  height: 52rpx;
+  background: #E0F2FE;
+  color: #0EA5E9;
+  font-size: 32rpx;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12rpx;
+}
+
+.step-num {
+  width: 64rpx;
+  text-align: center;
+  font-size: 28rpx;
+  font-weight: 700;
+  color: #1E293B;
+}
+
+.ci-total {
+  font-size: 28rpx;
+  font-weight: 700;
+  flex-shrink: 0;
+  min-width: 80rpx;
+  text-align: right;
+}
+
+/* 配送时间 */
+.time-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16rpx;
+}
+
+.time-option {
+  padding: 16rpx 32rpx;
+  border-radius: 100rpx;
+  border: 2rpx solid #E2E8F0;
+  font-size: 26rpx;
+  color: #475569;
+  transition: all 0.2s;
+}
+
+.time-option-active {
+  border-color: #0EA5E9;
+  background: #E0F2FE;
+  color: #0369A1;
+  font-weight: 600;
+}
+
+/* 备注 */
+.remark-input {
+  width: 100%;
+  min-height: 120rpx;
+  font-size: 26rpx;
+  color: #1E293B;
+  padding: 16rpx;
+  background: #F8FAFC;
+  border-radius: 12rpx;
+  box-sizing: border-box;
+}
+
+.remark-placeholder {
+  color: #CBD5E1;
+}
+
+/* 价格明细 */
+.price-detail {}
+
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8rpx 0;
+}
+
+.pr-label {
+  font-size: 26rpx;
+  color: #64748B;
+}
+
+.pr-value {
+  font-size: 26rpx;
+  color: #1E293B;
+}
+
+.total-label {
+  font-size: 30rpx;
+  font-weight: 700;
+  color: #0C4A6E;
+}
+
+.total-value {
+  font-size: 36rpx;
+  font-weight: 700;
+}
+
+/* 底部 */
+.order-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #FFF;
+  padding: 24rpx 32rpx;
+  display: flex;
+  align-items: center;
+  gap: 24rpx;
+  box-shadow: 0 -4rpx 20rpx rgba(0,0,0,0.08);
+  padding-bottom: calc(24rpx + env(safe-area-inset-bottom));
+}
+
+.footer-total {
+  display: flex;
+  align-items: baseline;
+  gap: 8rpx;
+}
+
+.ft-label {
+  font-size: 24rpx;
+  color: #64748B;
+}
+
+.ft-amount {
+  font-size: 40rpx;
+  font-weight: 700;
+}
+
+.submit-btn {
+  flex: 1;
+  font-size: 30rpx !important;
+  padding: 24rpx 0 !important;
+}

@@ -1,0 +1,83 @@
+<!-- pages/admin/orders.wxml - 管理员订单列表（接单/发货）-->
+<view class="admin-orders-page">
+  <!-- 状态筛选 -->
+  <view class="status-tabs">
+    <view
+      class="tab-item {{activeTab === item.value ? 'tab-active' : ''}}"
+      wx:for="{{tabs}}"
+      wx:key="value"
+      bindtap="switchTab"
+      data-value="{{item.value}}"
+    >{{item.label}}</view>
+  </view>
+
+  <!-- 订单列表 -->
+  <view wx:if="{{loading}}" class="loading">加载中...</view>
+  <view class="order-list" wx:else>
+    <view class="admin-order-card card" wx:for="{{orders}}" wx:key="_id">
+      <!-- 头部 -->
+      <view class="aoc-header">
+        <view>
+          <text class="aoc-no">订单 #{{item.orderNo}}</text>
+          <text class="aoc-time">{{item.createTimeStr}}</text>
+        </view>
+        <view class="aoc-status tag {{item.statusClass}}">{{item.statusLabel}}</view>
+      </view>
+
+      <!-- 地址 -->
+      <view class="aoc-addr">
+        <image src="/assets/icons/location.png" mode="aspectFit" class="aoc-loc-icon" />
+        <view>
+          <text class="aoc-user">{{item.address.name}} {{item.address.phone}}</text>
+          <text class="aoc-addr-text">{{item.address.province}}{{item.address.city}}{{item.address.district}}{{item.address.detail}}</text>
+        </view>
+      </view>
+
+      <!-- 商品摘要 -->
+      <view class="aoc-goods">
+        <text class="aoc-goods-text" wx:for="{{item.items}}" wx:key="goodsId" wx:for-item="g">
+          {{g.goodsName}} x{{g.quantity}}{{index < item.items.length-1 ? '、' : ''}}
+        </text>
+      </view>
+
+      <!-- 备注 -->
+      <view class="aoc-remark" wx:if="{{item.remark}}">
+        <text class="aoc-remark-label">备注：</text>
+        <text class="aoc-remark-text">{{item.remark}}</text>
+      </view>
+
+      <!-- 金额 -->
+      <view class="aoc-total">合计：<text class="price">¥{{item.totalAmount}}</text></view>
+
+      <!-- 操作按钮 -->
+      <view class="aoc-actions">
+        <!-- 待接单 → 接单 -->
+        <button class="btn-cta aoc-btn" bindtap="acceptOrder" data-id="{{item._id}}" wx:if="{{item.status === 'pending'}}">
+          接单
+        </button>
+        <!-- 已接单 → 开始配送 -->
+        <block wx:if="{{item.status === 'accepted'}}">
+          <button class="btn-primary aoc-btn" bindtap="startDelivery" data-id="{{item._id}}" data-order="{{item}}">
+            开始配送
+          </button>
+        </block>
+        <!-- 配送中 → 确认送达 -->
+        <block wx:if="{{item.status === 'delivering'}}">
+          <button class="btn-primary aoc-btn aoc-btn-green" bindtap="confirmDelivered" data-id="{{item._id}}">
+            确认送达
+          </button>
+        </block>
+        <!-- 拒绝/取消 -->
+        <button class="aoc-btn-cancel" bindtap="rejectOrder" data-id="{{item._id}}" wx:if="{{item.status === 'pending'}}">
+          拒绝
+        </button>
+        <!-- 查看详情 -->
+        <button class="aoc-btn-detail" bindtap="goDetail" data-id="{{item._id}}">详情</button>
+      </view>
+    </view>
+
+    <view class="empty-state" wx:if="{{orders.length === 0}}">
+      <text class="empty-text">暂无{{tabLabel}}订单</text>
+    </view>
+  </view>
+</view>

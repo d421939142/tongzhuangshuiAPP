@@ -1,0 +1,31 @@
+<!-- pages/admin/goods.wxml - 商品管理 -->
+<view class="admin-goods-page">
+  <view wx:if="{{loading}}" class="loading">加载中...</view>
+  <view class="goods-list" wx:else>
+    <view class="goods-item card" wx:for="{{goodsList}}" wx:key="_id">
+      <image class="gi-img" src="{{item.imageUrl}}" mode="aspectFill" />
+      <view class="gi-info">
+        <view class="gi-name">{{item.name}}</view>
+        <view class="gi-spec">{{item.spec}} | {{item.category}}</view>
+        <view class="gi-price price">¥{{item.price}}/桶</view>
+        <view class="gi-status tag {{item.status === 'active' ? 'tag-green' : 'tag-gray'}}">
+          {{item.status === 'active' ? '上架' : '下架'}}
+        </view>
+      </view>
+      <view class="gi-actions">
+        <view class="ga-btn" bindtap="editGoods" data-id="{{item._id}}">编辑</view>
+        <view class="ga-btn {{item.status === 'active' ? 'ga-btn-red' : 'ga-btn-green'}}"
+          bindtap="toggleStatus"
+          data-id="{{item._id}}"
+          data-status="{{item.status}}"
+        >{{item.status === 'active' ? '下架' : '上架'}}</view>
+      </view>
+    </view>
+
+    <view class="empty-state" wx:if="{{goodsList.length === 0}}">
+      <text class="empty-text">暂无商品，点击下方按钮添加</text>
+    </view>
+  </view>
+
+  <button class="btn-cta add-goods-btn" bindtap="addGoods">+ 添加商品</button>
+</view>

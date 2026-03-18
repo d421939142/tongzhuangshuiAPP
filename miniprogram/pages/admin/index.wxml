@@ -1,0 +1,75 @@
+<!-- pages/admin/index.wxml - 管理员首页 -->
+<view class="admin-page">
+  <!-- 顶部统计 -->
+  <view class="admin-header">
+    <view class="ah-title">商家管理后台</view>
+    <view class="ah-stats">
+      <view class="stat-card">
+        <view class="stat-num" style="color:#F59E0B">{{stats.pending}}</view>
+        <text class="stat-label">待接单</text>
+      </view>
+      <view class="stat-divider"></view>
+      <view class="stat-card">
+        <view class="stat-num" style="color:#0EA5E9">{{stats.delivering}}</view>
+        <text class="stat-label">配送中</text>
+      </view>
+      <view class="stat-divider"></view>
+      <view class="stat-card">
+        <view class="stat-num" style="color:#16A34A">{{stats.todayDelivered}}</view>
+        <text class="stat-label">今日完成</text>
+      </view>
+      <view class="stat-divider"></view>
+      <view class="stat-card">
+        <view class="stat-num" style="color:#0C4A6E">{{stats.todayRevenue}}</view>
+        <text class="stat-label">今日营收</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 快捷功能 -->
+  <view class="quick-menu">
+    <view class="qm-item" bindtap="goOrders" data-tab="pending">
+      <view class="qm-icon qm-icon-amber">
+        <image src="/assets/icons/order-icon.png" mode="aspectFit" class="qm-img" />
+      </view>
+      <view class="qm-info">
+        <text class="qm-title">待接单</text>
+        <text class="qm-sub">{{stats.pending}}个新订单</text>
+      </view>
+      <view class="qm-badge" wx:if="{{stats.pending > 0}}">{{stats.pending}}</view>
+    </view>
+
+    <view class="qm-item" bindtap="goOrders" data-tab="accepted">
+      <view class="qm-icon qm-icon-blue">
+        <image src="/assets/icons/bottle.png" mode="aspectFit" class="qm-img" />
+      </view>
+      <view class="qm-info">
+        <text class="qm-title">已接单/配送中</text>
+        <text class="qm-sub">{{stats.delivering}}单正在配送</text>
+      </view>
+      <image src="/assets/icons/arrow-right.png" mode="aspectFit" class="qm-arrow" />
+    </view>
+
+    <view class="qm-item" bindtap="goOrders" data-tab="all">
+      <view class="qm-icon qm-icon-teal">
+        <image src="/assets/icons/order-icon.png" mode="aspectFit" class="qm-img" />
+      </view>
+      <view class="qm-info">
+        <text class="qm-title">所有订单</text>
+        <text class="qm-sub">查看全部订单记录</text>
+      </view>
+      <image src="/assets/icons/arrow-right.png" mode="aspectFit" class="qm-arrow" />
+    </view>
+
+    <view class="qm-item" bindtap="goGoods">
+      <view class="qm-icon qm-icon-green">
+        <image src="/assets/icons/bottle.png" mode="aspectFit" class="qm-img" />
+      </view>
+      <view class="qm-info">
+        <text class="qm-title">商品管理</text>
+        <text class="qm-sub">添加/编辑商品</text>
+      </view>
+      <image src="/assets/icons/arrow-right.png" mode="aspectFit" class="qm-arrow" />
+    </view>
+  </view>
+</view>

@@ -1,0 +1,63 @@
+<!-- pages/history/history.wxml - 订单列表 -->
+<view class="history-page">
+  <!-- 状态筛选 Tab -->
+  <view class="status-tabs">
+    <view
+      class="tab-item {{activeTab === item.value ? 'tab-active' : ''}}"
+      wx:for="{{tabs}}"
+      wx:key="value"
+      bindtap="switchTab"
+      data-value="{{item.value}}"
+    >{{item.label}}</view>
+  </view>
+
+  <!-- 订单列表 -->
+  <view wx:if="{{loading}}" class="loading">加载中...</view>
+  <view class="order-list" wx:else>
+    <view class="order-card card" wx:for="{{orders}}" wx:key="_id" bindtap="goDetail" data-id="{{item._id}}">
+      <!-- 订单头 -->
+      <view class="oc-header">
+        <text class="oc-no">订单 #{{item.orderNo}}</text>
+        <view class="oc-status tag {{item.statusClass}}">{{item.statusLabel}}</view>
+      </view>
+      <view class="divider"></view>
+
+      <!-- 商品摘要 -->
+      <view class="oc-goods">
+        <image class="og-img" src="{{item.items[0].goodsImg}}" mode="aspectFill" wx:if="{{item.items[0].goodsImg}}" />
+        <view class="og-info">
+          <text class="og-name">{{item.items[0].goodsName}}</text>
+          <text class="og-more" wx:if="{{item.items.length > 1}}">等{{item.items.length}}件商品</text>
+          <text class="og-spec">{{item.items[0].spec}}</text>
+        </view>
+        <text class="og-qty">x{{item.items[0].quantity}}</text>
+      </view>
+
+      <!-- 订单脚 -->
+      <view class="divider"></view>
+      <view class="oc-footer">
+        <view class="oc-time">{{item.createTimeStr}}</view>
+        <view class="oc-right">
+          <text class="oc-total">合计 <text class="price">¥{{item.totalAmount}}</text></text>
+          <button
+            class="oc-action-btn"
+            catchtap="cancelOrder"
+            data-id="{{item._id}}"
+            wx:if="{{item.status === 'pending'}}"
+          >取消订单</button>
+          <button
+            class="oc-action-btn oc-rebuy"
+            catchtap="reorder"
+            data-order="{{item}}"
+            wx:if="{{item.status === 'delivered' || item.status === 'cancelled'}}"
+          >再来一单</button>
+        </view>
+      </view>
+    </view>
+
+    <view class="empty-state" wx:if="{{orders.length === 0}}">
+      <image class="empty-icon" src="/assets/icons/order-icon.png" mode="aspectFit" />
+      <text class="empty-text">暂无{{tabLabelMap[activeTab]}}订单</text>
+    </view>
+  </view>
+</view>

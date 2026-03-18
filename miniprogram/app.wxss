@@ -1,0 +1,210 @@
+/* app.wxss - 全局样式 */
+page {
+  background-color: #F0F9FF;
+  font-family: PingFang SC, -apple-system, sans-serif;
+  color: #1E293B;
+  box-sizing: border-box;
+}
+
+/* ==================== 通用变量色 ==================== */
+/* 主色 #0EA5E9 | 深色 #0C4A6E | CTA #F59E0B | 灰 #64748B */
+
+/* ==================== 通用容器 ==================== */
+.container {
+  padding: 0 24rpx 40rpx;
+  min-height: 100vh;
+}
+
+.page-padding {
+  padding: 24rpx;
+}
+
+/* ==================== 卡片 ==================== */
+.card {
+  background: #FFFFFF;
+  border-radius: 20rpx;
+  padding: 28rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 2rpx 16rpx rgba(14, 165, 233, 0.08);
+}
+
+.card-title {
+  font-size: 30rpx;
+  font-weight: 700;
+  color: #0C4A6E;
+  margin-bottom: 16rpx;
+}
+
+/* ==================== 按钮 ==================== */
+.btn-primary {
+  background: #0EA5E9;
+  color: #FFFFFF;
+  border-radius: 100rpx;
+  font-size: 28rpx;
+  font-weight: 600;
+  padding: 24rpx 0;
+  text-align: center;
+  border: none;
+}
+
+.btn-primary::after {
+  border: none;
+}
+
+.btn-cta {
+  background: linear-gradient(135deg, #F59E0B, #F97316);
+  color: #FFFFFF;
+  border-radius: 100rpx;
+  font-size: 30rpx;
+  font-weight: 700;
+  padding: 26rpx 0;
+  text-align: center;
+  border: none;
+  box-shadow: 0 8rpx 24rpx rgba(245, 158, 11, 0.35);
+}
+
+.btn-cta::after {
+  border: none;
+}
+
+.btn-outline {
+  background: transparent;
+  color: #0EA5E9;
+  border-radius: 100rpx;
+  font-size: 26rpx;
+  font-weight: 500;
+  padding: 20rpx 0;
+  text-align: center;
+  border: 2rpx solid #0EA5E9;
+}
+
+.btn-outline::after {
+  border: none;
+}
+
+.btn-danger {
+  background: #EF4444;
+  color: #FFFFFF;
+  border-radius: 100rpx;
+  font-size: 26rpx;
+  font-weight: 600;
+  padding: 20rpx 0;
+  text-align: center;
+  border: none;
+}
+
+.btn-danger::after {
+  border: none;
+}
+
+/* ==================== 标签 ==================== */
+.tag {
+  display: inline-block;
+  padding: 4rpx 16rpx;
+  border-radius: 100rpx;
+  font-size: 22rpx;
+  font-weight: 500;
+}
+
+.tag-blue {
+  background: #E0F2FE;
+  color: #0369A1;
+}
+
+.tag-green {
+  background: #DCFCE7;
+  color: #16A34A;
+}
+
+.tag-orange {
+  background: #FEF3C7;
+  color: #D97706;
+}
+
+.tag-red {
+  background: #FEE2E2;
+  color: #DC2626;
+}
+
+.tag-gray {
+  background: #F1F5F9;
+  color: #64748B;
+}
+
+/* ==================== 分割线 ==================== */
+.divider {
+  height: 1rpx;
+  background: #E2E8F0;
+  margin: 20rpx 0;
+}
+
+/* ==================== 空状态 ==================== */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 80rpx 40rpx;
+}
+
+.empty-icon {
+  width: 180rpx;
+  height: 180rpx;
+  margin-bottom: 24rpx;
+  opacity: 0.4;
+}
+
+.empty-text {
+  font-size: 28rpx;
+  color: #94A3B8;
+  text-align: center;
+}
+
+/* ==================== 加载 ==================== */
+.loading {
+  display: flex;
+  justify-content: center;
+  padding: 40rpx;
+  color: #94A3B8;
+  font-size: 26rpx;
+}
+
+/* ==================== 表单项 ==================== */
+.form-item {
+  display: flex;
+  align-items: center;
+  padding: 24rpx 0;
+  border-bottom: 1rpx solid #F1F5F9;
+}
+
+.form-label {
+  font-size: 28rpx;
+  color: #334155;
+  width: 160rpx;
+  flex-shrink: 0;
+}
+
+.form-input {
+  flex: 1;
+  font-size: 28rpx;
+  color: #1E293B;
+  text-align: right;
+}
+
+.form-placeholder {
+  color: #CBD5E1;
+}
+
+/* ==================== 价格 ==================== */
+.price {
+  color: #EF4444;
+  font-weight: 700;
+}
+
+.price-unit {
+  font-size: 22rpx;
+  font-weight: 500;
+}
+
+.price-amount {
+  font-size: 36rpx;
+}

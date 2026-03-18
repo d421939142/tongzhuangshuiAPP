@@ -1,0 +1,185 @@
+/* pages/admin/orders.wxss */
+.admin-orders-page {
+  background: #F0F9FF;
+  min-height: 100vh;
+  padding-bottom: 40rpx;
+}
+
+.status-tabs {
+  display: flex;
+  background: #FFF;
+  border-bottom: 1rpx solid #F1F5F9;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.tab-item {
+  display: inline-block;
+  padding: 24rpx 24rpx;
+  font-size: 26rpx;
+  color: #64748B;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.tab-active {
+  color: #0EA5E9;
+  font-weight: 700;
+}
+
+.tab-active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 20%;
+  right: 20%;
+  height: 4rpx;
+  background: #0EA5E9;
+  border-radius: 2rpx;
+}
+
+.order-list {
+  padding: 16rpx 24rpx;
+}
+
+.admin-order-card {
+  margin-bottom: 20rpx;
+}
+
+.aoc-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16rpx;
+}
+
+.aoc-no {
+  font-size: 26rpx;
+  font-weight: 700;
+  color: #1E293B;
+  display: block;
+}
+
+.aoc-time {
+  font-size: 22rpx;
+  color: #94A3B8;
+  display: block;
+  margin-top: 4rpx;
+}
+
+.aoc-addr {
+  display: flex;
+  gap: 12rpx;
+  align-items: flex-start;
+  background: #F8FAFC;
+  border-radius: 12rpx;
+  padding: 16rpx;
+  margin-bottom: 16rpx;
+}
+
+.aoc-loc-icon {
+  width: 36rpx;
+  height: 36rpx;
+  flex-shrink: 0;
+  margin-top: 4rpx;
+}
+
+.aoc-user {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #1E293B;
+  display: block;
+  margin-bottom: 4rpx;
+}
+
+.aoc-addr-text {
+  font-size: 24rpx;
+  color: #64748B;
+  display: block;
+}
+
+.aoc-goods {
+  padding: 8rpx 0;
+  margin-bottom: 8rpx;
+}
+
+.aoc-goods-text {
+  font-size: 26rpx;
+  color: #475569;
+  line-height: 1.6;
+}
+
+.aoc-remark {
+  background: #FEF3C7;
+  padding: 12rpx 16rpx;
+  border-radius: 10rpx;
+  margin-bottom: 12rpx;
+  display: flex;
+  gap: 8rpx;
+}
+
+.aoc-remark-label {
+  font-size: 24rpx;
+  color: #D97706;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.aoc-remark-text {
+  font-size: 24rpx;
+  color: #92400E;
+}
+
+.aoc-total {
+  font-size: 26rpx;
+  color: #64748B;
+  margin-bottom: 16rpx;
+}
+
+.aoc-actions {
+  display: flex;
+  gap: 16rpx;
+  flex-wrap: wrap;
+}
+
+.aoc-btn {
+  flex: 1;
+  font-size: 26rpx !important;
+  padding: 18rpx 0 !important;
+  min-width: 150rpx;
+}
+
+.aoc-btn-green {
+  background: #16A34A !important;
+}
+
+.aoc-btn-cancel {
+  font-size: 26rpx;
+  color: #DC2626;
+  padding: 18rpx 28rpx;
+  background: #FEE2E2;
+  border-radius: 100rpx;
+  border: none;
+  line-height: 1.4;
+}
+
+.aoc-btn-cancel::after {
+  border: none;
+}
+
+.aoc-btn-detail {
+  font-size: 26rpx;
+  color: #64748B;
+  padding: 18rpx 28rpx;
+  background: #F1F5F9;
+  border-radius: 100rpx;
+  border: none;
+  line-height: 1.4;
+}
+
+.aoc-btn-detail::after {
+  border: none;
+}

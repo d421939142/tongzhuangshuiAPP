@@ -1,0 +1,63 @@
+<!-- pages/admin/goods-edit.wxml - 商品编辑 -->
+<view class="goods-edit-page">
+  <!-- 商品图片上传 -->
+  <view class="section-block">
+    <view class="block-title">商品图片</view>
+    <view class="img-upload" bindtap="uploadImage">
+      <image class="upload-preview" src="{{form.imageUrl}}" mode="aspectFill" wx:if="{{form.imageUrl}}" />
+      <view class="upload-placeholder" wx:else>
+        <view class="upload-icon">+</view>
+        <text class="upload-tip">点击上传图片</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 基本信息 -->
+  <view class="section-block">
+    <view class="block-title">基本信息</view>
+    <view class="form-item">
+      <text class="form-label">商品名称</text>
+      <input class="form-input" placeholder="如：农夫山泉天然水" value="{{form.name}}" bindinput="onInput" data-field="name" />
+    </view>
+    <view class="form-item">
+      <text class="form-label">商品分类</text>
+      <input class="form-input" placeholder="如：天然水/纯净水/矿泉水" value="{{form.category}}" bindinput="onInput" data-field="category" />
+    </view>
+    <view class="form-item">
+      <text class="form-label">规格</text>
+      <input class="form-input" placeholder="如：18.9L/桶" value="{{form.spec}}" bindinput="onInput" data-field="spec" />
+    </view>
+    <view class="form-item">
+      <text class="form-label">单价(元)</text>
+      <input class="form-input" placeholder="如：25" type="digit" value="{{form.price}}" bindinput="onInput" data-field="price" />
+    </view>
+    <view class="form-item">
+      <text class="form-label">排序</text>
+      <input class="form-input" placeholder="数字越小越靠前" type="number" value="{{form.sortOrder}}" bindinput="onInput" data-field="sortOrder" />
+    </view>
+  </view>
+
+  <!-- 商品描述 -->
+  <view class="section-block">
+    <view class="block-title">商品描述</view>
+    <textarea
+      class="desc-input"
+      placeholder="输入商品详细描述..."
+      value="{{form.description}}"
+      bindinput="onDescInput"
+      maxlength="200"
+    />
+  </view>
+
+  <!-- 上架状态 -->
+  <view class="section-block">
+    <view class="form-item">
+      <text class="form-label">上架状态</text>
+      <switch checked="{{form.status === 'active'}}" bindchange="onStatusChange" color="#0EA5E9" />
+    </view>
+  </view>
+
+  <button class="btn-cta save-btn" bindtap="saveGoods" loading="{{saving}}">
+    {{saving ? '保存中...' : '保存商品'}}
+  </button>
+</view>

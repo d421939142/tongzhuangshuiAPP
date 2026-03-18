@@ -1,0 +1,58 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/goods/goods",
+    "pages/order/order",
+    "pages/address/address",
+    "pages/address/edit",
+    "pages/history/history",
+    "pages/history/detail",
+    "pages/profile/profile",
+    "pages/admin/index",
+    "pages/admin/orders",
+    "pages/admin/order-detail",
+    "pages/admin/goods",
+    "pages/admin/goods-edit"
+  ],
+  "tabBar": {
+    "color": "#64748B",
+    "selectedColor": "#0EA5E9",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "assets/icons/home.png",
+        "selectedIconPath": "assets/icons/home-active.png"
+      },
+      {
+        "pagePath": "pages/history/history",
+        "text": "订单",
+        "iconPath": "assets/icons/order.png",
+        "selectedIconPath": "assets/icons/order-active.png"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "我的",
+        "iconPath": "assets/icons/profile.png",
+        "selectedIconPath": "assets/icons/profile-active.png"
+      }
+    ]
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#0C4A6E",
+    "navigationBarTitleText": "桶装水配送",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#F0F9FF"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "获取您的位置以便准确配送"
+    }
+  },
+  "requiredPrivateInfos": ["getLocation"],
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

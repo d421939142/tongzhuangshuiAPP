@@ -1,0 +1,80 @@
+<!-- pages/profile/profile.wxml - 个人中心 -->
+<view class="profile-page">
+  <!-- 用户信息头部 -->
+  <view class="profile-header">
+    <view class="ph-bg"></view>
+    <view class="ph-content">
+      <image class="ph-avatar" src="{{userInfo.avatarUrl || '/assets/images/default-avatar.png'}}" mode="aspectFill" />
+      <view class="ph-info">
+        <text class="ph-name">{{userInfo.nickName || '桶装水用户'}}</text>
+        <text class="ph-sub">欢迎使用桶装水配送</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 订单快捷入口 -->
+  <view class="order-quick card">
+    <view class="oq-title">我的订单</view>
+    <view class="oq-items">
+      <view class="oq-item" bindtap="goOrders" data-tab="pending">
+        <view class="oq-num">{{pendingCount}}</view>
+        <text class="oq-label">待接单</text>
+      </view>
+      <view class="oq-item" bindtap="goOrders" data-tab="delivering">
+        <view class="oq-num">{{deliveringCount}}</view>
+        <text class="oq-label">配送中</text>
+      </view>
+      <view class="oq-item" bindtap="goOrders" data-tab="delivered">
+        <view class="oq-num">{{totalCount}}</view>
+        <text class="oq-label">累计订单</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 功能菜单 -->
+  <view class="menu-section card">
+    <view class="menu-item" bindtap="goAddress">
+      <view class="mi-left">
+        <view class="mi-icon mi-icon-blue">
+          <image src="/assets/icons/location.png" mode="aspectFit" class="mi-img" />
+        </view>
+        <text class="mi-label">收货地址</text>
+      </view>
+      <image src="/assets/icons/arrow-right.png" mode="aspectFit" class="mi-arrow" />
+    </view>
+    <view class="divider"></view>
+    <view class="menu-item" bindtap="goHistory">
+      <view class="mi-left">
+        <view class="mi-icon mi-icon-amber">
+          <image src="/assets/icons/order-icon.png" mode="aspectFit" class="mi-img" />
+        </view>
+        <text class="mi-label">历史订单</text>
+      </view>
+      <image src="/assets/icons/arrow-right.png" mode="aspectFit" class="mi-arrow" />
+    </view>
+    <view class="divider" wx:if="{{isAdmin}}"></view>
+    <view class="menu-item" bindtap="goAdmin" wx:if="{{isAdmin}}">
+      <view class="mi-left">
+        <view class="mi-icon mi-icon-teal">
+          <image src="/assets/icons/admin.png" mode="aspectFit" class="mi-img" />
+        </view>
+        <text class="mi-label">商家管理后台</text>
+      </view>
+      <view class="mi-tag tag tag-blue">管理员</view>
+      <image src="/assets/icons/arrow-right.png" mode="aspectFit" class="mi-arrow" />
+    </view>
+  </view>
+
+  <!-- 客服/联系 -->
+  <view class="menu-section card">
+    <button class="menu-item contact-btn" open-type="contact">
+      <view class="mi-left">
+        <view class="mi-icon mi-icon-green">
+          <image src="/assets/icons/service.png" mode="aspectFit" class="mi-img" />
+        </view>
+        <text class="mi-label">联系客服</text>
+      </view>
+      <image src="/assets/icons/arrow-right.png" mode="aspectFit" class="mi-arrow" />
+    </button>
+  </view>
+</view>

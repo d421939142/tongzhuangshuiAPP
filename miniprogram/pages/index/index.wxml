@@ -1,0 +1,108 @@
+<!-- pages/index/index.wxml - 首页 -->
+<view class="index-page">
+  <!-- 顶部 Banner -->
+  <view class="banner">
+    <view class="banner-content">
+      <view class="banner-greeting">你好，清爽一天</view>
+      <view class="banner-title">优质桶装水</view>
+      <view class="banner-subtitle">今日下单，最快2小时送达</view>
+    </view>
+    <image class="banner-img" src="/assets/images/water-banner.png" mode="aspectFit" />
+    <!-- 水波纹装饰 -->
+    <view class="wave-decor"></view>
+  </view>
+
+  <!-- 快速入口 -->
+  <view class="quick-entry card">
+    <view class="quick-item" bindtap="goGoods">
+      <view class="quick-icon quick-icon-blue">
+        <image src="/assets/icons/bottle.png" mode="aspectFit" class="qi-img" />
+      </view>
+      <text class="quick-label">选购水桶</text>
+    </view>
+    <view class="quick-item" bindtap="goHistory">
+      <view class="quick-icon quick-icon-amber">
+        <image src="/assets/icons/order-icon.png" mode="aspectFit" class="qi-img" />
+      </view>
+      <text class="quick-label">我的订单</text>
+    </view>
+    <view class="quick-item" bindtap="goAddress">
+      <view class="quick-icon quick-icon-teal">
+        <image src="/assets/icons/location.png" mode="aspectFit" class="qi-img" />
+      </view>
+      <text class="quick-label">收货地址</text>
+    </view>
+    <view class="quick-item" wx:if="{{isAdmin}}" bindtap="goAdmin">
+      <view class="quick-icon quick-icon-red">
+        <image src="/assets/icons/admin.png" mode="aspectFit" class="qi-img" />
+      </view>
+      <text class="quick-label">商家后台</text>
+    </view>
+  </view>
+
+  <!-- 一键续购（上次订单） -->
+  <view class="last-order-section" wx:if="{{lastOrder}}">
+    <view class="section-header">
+      <text class="section-title">一键续购</text>
+      <text class="section-more" bindtap="goHistory">查看全部 ></text>
+    </view>
+    <view class="last-order-card card" bindtap="goGoods">
+      <image class="lo-img" src="{{lastOrder.goodsImg}}" mode="aspectFill" />
+      <view class="lo-info">
+        <text class="lo-name">{{lastOrder.goodsName}}</text>
+        <text class="lo-qty">共{{lastOrder.quantity}}桶</text>
+        <text class="lo-time">{{lastOrder.createTime}}</text>
+      </view>
+      <view class="lo-btn">
+        <button class="btn-cta lo-rebuy" bindtap="quickReorder" data-order="{{lastOrder}}">再来一单</button>
+      </view>
+    </view>
+  </view>
+
+  <!-- 商品列表 -->
+  <view class="goods-section">
+    <view class="section-header">
+      <text class="section-title">全部商品</text>
+    </view>
+    <view wx:if="{{loading}}" class="loading">加载中...</view>
+    <view class="goods-list" wx:else>
+      <view class="goods-card card" wx:for="{{goodsList}}" wx:key="_id" bindtap="goGoodsDetail" data-id="{{item._id}}">
+        <view class="gc-color-bar" style="background:{{item.colorTag || '#0EA5E9'}}"></view>
+        <image class="gc-img" src="{{item.imageUrl}}" mode="aspectFill" />
+        <view class="gc-info">
+          <view class="gc-name">{{item.name}}</view>
+          <view class="gc-desc">{{item.description}}</view>
+          <view class="gc-meta">
+            <view class="gc-spec">{{item.spec}}</view>
+            <view class="gc-tag tag tag-blue">{{item.category}}</view>
+          </view>
+          <view class="gc-bottom">
+            <view class="price">
+              <text class="price-unit">¥</text>
+              <text class="price-amount">{{item.price}}</text>
+              <text class="gc-unit"> /桶</text>
+            </view>
+            <button class="gc-buy-btn" catchtap="addToCart" data-item="{{item}}">加入购物</button>
+          </view>
+        </view>
+      </view>
+
+      <!-- 空状态 -->
+      <view class="empty-state" wx:if="{{goodsList.length === 0}}">
+        <text class="empty-text">暂无商品，请联系管理员添加</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 购物车悬浮按钮 -->
+  <view class="cart-fab" wx:if="{{cartCount > 0}}" bindtap="goOrder">
+    <view class="cart-fab-icon">
+      <image src="/assets/icons/cart.png" mode="aspectFit" class="cart-img" />
+      <view class="cart-badge">{{cartCount}}</view>
+    </view>
+    <view class="cart-fab-info">
+      <text class="cart-fab-total">¥{{cartTotal}}</text>
+      <text class="cart-fab-tip">去结算</text>
+    </view>
+  </view>
+</view>

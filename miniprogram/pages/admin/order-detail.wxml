@@ -1,0 +1,41 @@
+<!-- pages/admin/order-detail.wxml - 管理员订单详情 -->
+<view class="detail-page" wx:if="{{order}}">
+  <view class="status-card" style="background: linear-gradient(135deg, #0C4A6E, #0EA5E9)">
+    <view class="sc-status">{{order.statusLabel}}</view>
+    <view class="sc-no">订单号：{{order.orderNo}}</view>
+    <view class="sc-time">下单时间：{{order.createTimeStr}}</view>
+  </view>
+
+  <view class="section-block">
+    <view class="block-title">客户信息</view>
+    <view class="info-row"><text class="ir-label">姓名</text><text class="ir-val">{{order.address.name}}</text></view>
+    <view class="info-row"><text class="ir-label">手机</text><text class="ir-val">{{order.address.phone}}</text></view>
+    <view class="info-row"><text class="ir-label">地址</text><text class="ir-val">{{order.address.province}}{{order.address.city}}{{order.address.district}}{{order.address.detail}}</text></view>
+    <view class="info-row" wx:if="{{order.remark}}"><text class="ir-label">备注</text><text class="ir-val remark-val">{{order.remark}}</text></view>
+  </view>
+
+  <view class="section-block">
+    <view class="block-title">商品清单</view>
+    <view class="goods-item" wx:for="{{order.items}}" wx:key="goodsId">
+      <view class="gi-info">
+        <text class="gi-name">{{item.goodsName}}</text>
+        <text class="gi-spec">{{item.spec}}</text>
+      </view>
+      <text class="gi-price">¥{{item.price}} × {{item.quantity}} = <text class="price">¥{{item.subtotal}}</text></text>
+    </view>
+    <view class="divider"></view>
+    <view class="total-row">
+      <text>合计</text>
+      <text class="price total-amount">¥{{order.totalAmount}}</text>
+    </view>
+  </view>
+
+  <!-- 操作 -->
+  <view class="action-block">
+    <button class="btn-cta action-btn" bindtap="acceptOrder" wx:if="{{order.status === 'pending'}}">接单</button>
+    <button class="btn-primary action-btn" bindtap="startDelivery" wx:if="{{order.status === 'accepted'}}">开始配送</button>
+    <button class="btn-primary action-btn" style="background:#16A34A" bindtap="confirmDelivered" wx:if="{{order.status === 'delivering'}}">确认送达</button>
+    <button class="btn-danger action-btn" bindtap="rejectOrder" wx:if="{{order.status === 'pending'}}">拒绝订单</button>
+  </view>
+</view>
+<view class="loading" wx:else>加载中...</view>

@@ -1,0 +1,9 @@
+{
+  "rules": [
+    {
+      "kind": "doc",
+      "read": true,
+      "write": false
+    }
+  ]
+}

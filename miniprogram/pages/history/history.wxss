@@ -1,0 +1,151 @@
+/* pages/history/history.wxss */
+.history-page {
+  background: #F0F9FF;
+  min-height: 100vh;
+  padding-bottom: 40rpx;
+}
+
+/* 状态 tabs */
+.status-tabs {
+  display: flex;
+  background: #FFF;
+  padding: 0 16rpx;
+  border-bottom: 1rpx solid #F1F5F9;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.tab-item {
+  flex: 1;
+  text-align: center;
+  padding: 24rpx 8rpx;
+  font-size: 24rpx;
+  color: #64748B;
+  position: relative;
+}
+
+.tab-active {
+  color: #0EA5E9;
+  font-weight: 700;
+}
+
+.tab-active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 20%;
+  right: 20%;
+  height: 4rpx;
+  background: #0EA5E9;
+  border-radius: 2rpx;
+}
+
+/* 订单卡片 */
+.order-list {
+  padding: 16rpx 24rpx;
+}
+
+.order-card {
+  margin-bottom: 20rpx;
+}
+
+.oc-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16rpx;
+}
+
+.oc-no {
+  font-size: 24rpx;
+  color: #94A3B8;
+}
+
+/* 商品摘要 */
+.oc-goods {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  padding: 12rpx 0;
+}
+
+.og-img {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 12rpx;
+  flex-shrink: 0;
+}
+
+.og-info {
+  flex: 1;
+}
+
+.og-name {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #1E293B;
+  display: block;
+}
+
+.og-spec {
+  font-size: 22rpx;
+  color: #94A3B8;
+  display: block;
+  margin-top: 4rpx;
+}
+
+.og-more {
+  font-size: 22rpx;
+  color: #64748B;
+  display: block;
+}
+
+.og-qty {
+  font-size: 26rpx;
+  color: #64748B;
+  flex-shrink: 0;
+}
+
+/* 订单脚 */
+.oc-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 4rpx;
+}
+
+.oc-time {
+  font-size: 22rpx;
+  color: #94A3B8;
+}
+
+.oc-right {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+}
+
+.oc-total {
+  font-size: 24rpx;
+  color: #475569;
+}
+
+.oc-action-btn {
+  font-size: 22rpx;
+  color: #64748B;
+  padding: 10rpx 20rpx;
+  background: #F1F5F9;
+  border-radius: 100rpx;
+  border: none;
+  line-height: 1.4;
+}
+
+.oc-action-btn::after {
+  border: none;
+}
+
+.oc-rebuy {
+  color: #0EA5E9;
+  background: #E0F2FE;
+}

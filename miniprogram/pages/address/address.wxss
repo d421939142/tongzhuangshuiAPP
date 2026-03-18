@@ -1,0 +1,80 @@
+/* pages/address/address.wxss */
+.addr-page {
+  padding: 24rpx;
+  padding-bottom: 160rpx;
+  min-height: 100vh;
+  background: #F0F9FF;
+}
+
+.addr-card {
+  margin-bottom: 20rpx;
+  cursor: pointer;
+}
+
+.selectable {
+  border: 2rpx solid transparent;
+  transition: border 0.2s;
+}
+
+.selectable:active {
+  border-color: #0EA5E9;
+}
+
+.ac-top {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  margin-bottom: 10rpx;
+}
+
+.ac-name {
+  font-size: 30rpx;
+  font-weight: 700;
+  color: #1E293B;
+}
+
+.ac-phone {
+  font-size: 26rpx;
+  color: #64748B;
+  margin-left: 8rpx;
+}
+
+.ac-addr {
+  font-size: 26rpx;
+  color: #475569;
+  line-height: 1.5;
+}
+
+.ac-remark {
+  font-size: 22rpx;
+  color: #94A3B8;
+  margin-top: 6rpx;
+}
+
+.ac-actions {
+  display: flex;
+  gap: 16rpx;
+  margin-top: 16rpx;
+  padding-top: 16rpx;
+  border-top: 1rpx solid #F1F5F9;
+}
+
+.ac-btn {
+  font-size: 24rpx;
+  color: #0EA5E9;
+  padding: 8rpx 20rpx;
+  background: #E0F2FE;
+  border-radius: 100rpx;
+}
+
+.ac-btn-red {
+  color: #DC2626;
+  background: #FEE2E2;
+}
+
+.add-addr-btn {
+  position: fixed;
+  bottom: 40rpx;
+  left: 40rpx;
+  right: 40rpx;
+}

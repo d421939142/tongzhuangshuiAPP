@@ -1,0 +1,108 @@
+<!-- pages/order/order.wxml - 下单确认页 -->
+<view class="order-page">
+  <!-- 顶部导航 -->
+  <view class="page-header">
+    <text class="page-title">确认订单</text>
+  </view>
+
+  <!-- 收货地址 -->
+  <view class="section-block" bindtap="selectAddress">
+    <view wx:if="{{address}}">
+      <view class="addr-row">
+        <image src="/assets/icons/location.png" class="addr-icon" mode="aspectFit" />
+        <view class="addr-info">
+          <view class="addr-name-phone">
+            <text class="addr-name">{{address.name}}</text>
+            <text class="addr-phone">{{address.phone}}</text>
+          </view>
+          <view class="addr-detail">{{address.province}}{{address.city}}{{address.district}}{{address.detail}}</view>
+          <view class="addr-remark" wx:if="{{address.remark}}">备注：{{address.remark}}</view>
+        </view>
+        <image src="/assets/icons/arrow-right.png" class="arrow-icon" mode="aspectFit" />
+      </view>
+    </view>
+    <view class="addr-empty" wx:else>
+      <image src="/assets/icons/location.png" class="addr-icon" mode="aspectFit" />
+      <text class="addr-empty-text">请选择收货地址</text>
+      <image src="/assets/icons/arrow-right.png" class="arrow-icon" mode="aspectFit" />
+    </view>
+  </view>
+
+  <!-- 商品清单 -->
+  <view class="section-block">
+    <view class="block-title">商品清单</view>
+    <view class="cart-list">
+      <view class="cart-item" wx:for="{{cartItems}}" wx:key="_id">
+        <image class="ci-img" src="{{item.imageUrl}}" mode="aspectFill" />
+        <view class="ci-info">
+          <text class="ci-name">{{item.name}}</text>
+          <text class="ci-spec">{{item.spec}}</text>
+          <view class="ci-price-qty">
+            <text class="ci-price price">¥{{item.price}}/桶</text>
+            <view class="stepper">
+              <view class="step-btn" bindtap="decreaseQty" data-id="{{item._id}}">-</view>
+              <text class="step-num">{{item.quantity}}</text>
+              <view class="step-btn" bindtap="increaseQty" data-id="{{item._id}}">+</view>
+            </view>
+          </view>
+        </view>
+        <view class="ci-total price">¥{{item.subtotal}}</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 配送时间 -->
+  <view class="section-block">
+    <view class="block-title">配送时间</view>
+    <view class="time-options">
+      <view
+        class="time-option {{deliveryTime === item.value ? 'time-option-active' : ''}}"
+        wx:for="{{timeOptions}}"
+        wx:key="value"
+        bindtap="selectTime"
+        data-value="{{item.value}}"
+      >{{item.label}}</view>
+    </view>
+  </view>
+
+  <!-- 备注 -->
+  <view class="section-block">
+    <view class="block-title">订单备注</view>
+    <textarea
+      class="remark-input"
+      placeholder="如需特殊要求，请在此备注（如：放在门口、上午送等）"
+      placeholder-class="remark-placeholder"
+      value="{{remark}}"
+      bindinput="onRemarkInput"
+      maxlength="100"
+    />
+  </view>
+
+  <!-- 价格明细 -->
+  <view class="section-block price-detail">
+    <view class="price-row">
+      <text class="pr-label">商品金额</text>
+      <text class="pr-value">¥{{goodsTotal}}</text>
+    </view>
+    <view class="price-row">
+      <text class="pr-label">配送费</text>
+      <text class="pr-value" style="color:#16A34A">免费</text>
+    </view>
+    <view class="divider"></view>
+    <view class="price-row">
+      <text class="pr-label total-label">合计</text>
+      <text class="pr-value total-value price">¥{{goodsTotal}}</text>
+    </view>
+  </view>
+
+  <!-- 底部提交 -->
+  <view class="order-footer">
+    <view class="footer-total">
+      <text class="ft-label">实付</text>
+      <text class="ft-amount price">¥{{goodsTotal}}</text>
+    </view>
+    <button class="btn-cta submit-btn" bindtap="submitOrder" loading="{{submitting}}">
+      {{submitting ? '提交中...' : '提交订单'}}
+    </button>
+  </view>
+</view>

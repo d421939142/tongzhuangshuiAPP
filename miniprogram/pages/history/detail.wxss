@@ -1,0 +1,167 @@
+/* pages/history/detail.wxss */
+.detail-page {
+  background: #F0F9FF;
+  min-height: 100vh;
+  padding-bottom: 160rpx;
+}
+
+.status-card {
+  padding: 48rpx 32rpx;
+  border-radius: 0 0 40rpx 40rpx;
+}
+
+.sc-status {
+  font-size: 44rpx;
+  font-weight: 700;
+  color: #FFF;
+  margin-bottom: 8rpx;
+}
+
+.sc-tip {
+  font-size: 26rpx;
+  color: rgba(255,255,255,0.8);
+  margin-bottom: 16rpx;
+}
+
+.sc-no {
+  font-size: 22rpx;
+  color: rgba(255,255,255,0.6);
+}
+
+.section-block {
+  background: #FFF;
+  margin: 16rpx 24rpx;
+  border-radius: 20rpx;
+  padding: 28rpx;
+  box-shadow: 0 2rpx 12rpx rgba(14,165,233,0.07);
+}
+
+.block-title {
+  font-size: 28rpx;
+  font-weight: 700;
+  color: #0C4A6E;
+  margin-bottom: 16rpx;
+}
+
+.delivery-row {
+  display: flex;
+  padding: 8rpx 0;
+  gap: 16rpx;
+}
+
+.dr-label {
+  font-size: 26rpx;
+  color: #94A3B8;
+  width: 140rpx;
+  flex-shrink: 0;
+}
+
+.dr-val {
+  font-size: 26rpx;
+  color: #1E293B;
+  flex: 1;
+}
+
+.goods-item {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  padding: 12rpx 0;
+  border-bottom: 1rpx solid #F1F5F9;
+}
+
+.goods-item:last-child {
+  border-bottom: none;
+}
+
+.gi-img {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 12rpx;
+}
+
+.gi-info {
+  flex: 1;
+}
+
+.gi-name {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #1E293B;
+  display: block;
+}
+
+.gi-spec {
+  font-size: 22rpx;
+  color: #94A3B8;
+  display: block;
+  margin-top: 4rpx;
+}
+
+.gi-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4rpx;
+}
+
+.gi-price {
+  font-size: 26rpx;
+}
+
+.gi-qty {
+  font-size: 22rpx;
+  color: #94A3B8;
+}
+
+.remark-text {
+  font-size: 26rpx;
+  color: #475569;
+  line-height: 1.6;
+}
+
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8rpx 0;
+}
+
+.pr-label {
+  font-size: 26rpx;
+  color: #64748B;
+}
+
+.pr-value {
+  font-size: 26rpx;
+  color: #1E293B;
+}
+
+.total-label {
+  font-size: 30rpx;
+  font-weight: 700;
+  color: #0C4A6E;
+}
+
+.total-value {
+  font-size: 36rpx;
+  font-weight: 700;
+}
+
+.detail-actions {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  gap: 20rpx;
+  padding: 24rpx 32rpx;
+  background: #FFF;
+  box-shadow: 0 -4rpx 20rpx rgba(0,0,0,0.08);
+  padding-bottom: calc(24rpx + env(safe-area-inset-bottom));
+}
+
+.detail-actions button {
+  flex: 1;
+  font-size: 28rpx;
+  padding: 24rpx 0;
+}

@@ -1,0 +1,78 @@
+/* pages/admin/goods.wxss */
+.admin-goods-page {
+  background: #F0F9FF;
+  min-height: 100vh;
+  padding: 24rpx;
+  padding-bottom: 160rpx;
+}
+
+.goods-item {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  padding: 20rpx;
+  margin-bottom: 16rpx;
+  overflow: hidden;
+}
+
+.gi-img {
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 16rpx;
+  flex-shrink: 0;
+}
+
+.gi-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6rpx;
+}
+
+.gi-name {
+  font-size: 30rpx;
+  font-weight: 700;
+  color: #1E293B;
+}
+
+.gi-spec {
+  font-size: 22rpx;
+  color: #94A3B8;
+}
+
+.gi-price {
+  font-size: 28rpx;
+}
+
+.gi-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12rpx;
+  flex-shrink: 0;
+}
+
+.ga-btn {
+  font-size: 24rpx;
+  padding: 12rpx 24rpx;
+  border-radius: 100rpx;
+  text-align: center;
+  color: #0EA5E9;
+  background: #E0F2FE;
+}
+
+.ga-btn-red {
+  color: #DC2626;
+  background: #FEE2E2;
+}
+
+.ga-btn-green {
+  color: #16A34A;
+  background: #DCFCE7;
+}
+
+.add-goods-btn {
+  position: fixed;
+  bottom: 40rpx;
+  left: 40rpx;
+  right: 40rpx;
+}
