@@ -11,111 +11,28 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    # 第一步：检出代码
     - name: Checkout Code
       uses: actions/checkout@v4
 
-    # 第二步：接受 Android licenses
-    - name: Accept Android Licenses
-      run: |
-        yes | sdkmanager --licenses || true
-
-    # 第三步：缓存 Flutter 和依赖（这样后续编译会快很多）
     - name: Setup Flutter
       uses: subosito/flutter-action@v2
       with:
         flutter-version: '3.19.0'
-        cache: true  # 启用缓存，加速后续构建
+        cache: true
 
-    # 第四步：生成 Gradle Wrapper（确保 gradle-wrapper.jar 存在）
-    - name: Generate Gradle Wrapper
-      run: |
-        cd flutter_app/android
-        # 创建 gradle/wrapper 目录（如果不存在）
-        mkdir -p gradle/wrapper
-        # 下载 gradle-wrapper.jar
-        curl -L -o gradle/wrapper/gradle-wrapper.jar https://raw.githubusercontent.com/gradle/gradle/v7.5.0/gradle/wrapper/gradle-wrapper.jar
-        # 设置 gradlew 可执行权限
-        chmod +x gradlew
-        # 列出文件验证
-        ls -lh gradle/wrapper/
-        ls -lh gradlew
-
-    # 第五步：验证 Flutter 环境
-    - name: Verify Flutter Setup
-      run: |
-        flutter --version
-        flutter doctor -v
-
-    # 第六步：进入项目目录并获取依赖
     - name: Get Dependencies
       run: |
         cd flutter_app
         flutter pub get
-        flutter pub cache clean  # 清理过期缓存
 
-    # 第七步：代码格式检查（可选但推荐）
-    - name: Run Flutter Format Check
-      continue-on-error: true
-      run: |
-        cd flutter_app
-        flutter format --set-exit-if-changed .
-
-    # 第八步：静态代码分析
-    - name: Run Flutter Analyze
-      continue-on-error: true
-      run: |
-        cd flutter_app
-        flutter analyze
-
-    # 第九步：清理构建缓存（避免旧版本冲突）
-    - name: Clean Build
-      run: |
-        cd flutter_app
-        flutter clean
-
-    # 第十步：构建 APK (Release 版本)
     - name: Build APK
       run: |
         cd flutter_app
-        flutter build apk --release --verbose
+        flutter build apk --release
 
-    # 第十一步：验证 APK 是否生成成功
-    - name: Verify APK Build
-      run: |
-        if [ ! -f "flutter_app/build/app/outputs/flutter-apk/app-release.apk" ]; then
-          echo "❌ APK 构建失败，文件不存在"
-          exit 1
-        fi
-        echo "✅ APK 构建成功"
-        ls -lh flutter_app/build/app/outputs/flutter-apk/app-release.apk
-
-    # 第十二步：上传到 Artifacts（用于手动下载）
-    - name: Upload APK as Artifact
+    - name: Upload APK
       uses: actions/upload-artifact@v4
-      if: success()
       with:
         name: water-delivery-apk
         path: flutter_app/build/app/outputs/flutter-apk/app-release.apk
-        retention-days: 30  # 保留 30 天
-
-    # 第十三步：发布到 Release（可选，仅在打 Tag 时触发）
-    - name: Upload APK to Release
-      uses: softprops/action-gh-release@v1
-      if: startsWith(github.ref, 'refs/tags/')
-      with:
-        files: flutter_app/build/app/outputs/flutter-apk/app-release.apk
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-    # 第十四步：构建失败时的诊断信息
-    - name: Collect Logs on Failure
-      if: failure()
-      run: |
-        echo "❌ 构建失败，收集诊断信息..."
-        echo "=== Flutter Doctor ===" 
-        flutter doctor
-        echo "=== Gradle Version ===" 
-        cd flutter_app && ls -la android/gradle/wrapper/
-        echo "=== Build Files ==="
-        find flutter_app/build -name "*.log" -type f | head -10 | xargs cat 2>/dev/null || echo "No logs found"
+        retention-days: 30

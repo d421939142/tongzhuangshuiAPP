@@ -1,0 +1,60 @@
+name: water_delivery_app
+description: 桶装水配送管理系统 - 送水工 & 管理员 App
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.18.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  # 网络请求
+  dio: ^5.3.1
+  http: ^1.1.0
+  
+  # 状态管理
+  get: ^4.6.5
+  provider: ^6.0.0
+  
+  # 本地存储
+  sqflite: ^2.3.0
+  path_provider: ^2.1.0
+  shared_preferences: ^2.2.0
+  
+  # 图片相关
+  image_picker: ^1.0.0
+  image_gallery_saver: ^2.0.2
+  cached_network_image: ^3.3.0
+  
+  # 定位和地图
+  geolocator: ^9.0.2
+  
+  # 日期时间
+  intl: ^0.19.0
+  
+  # UI 和动画
+  cupertino_icons: ^1.0.2
+  lottie: ^2.7.0
+  dotted_border: ^2.1.0
+  
+  # 权限管理
+  permission_handler: ^11.3.1
+  
+  # 文件处理
+  file_picker: ^5.5.0
+  
+  # JSON 序列化
+  json_annotation: ^4.8.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+  build_runner: ^2.4.6
+  json_serializable: ^6.7.1
+
+flutter:
+  uses-material-design: true
